@@ -15,14 +15,15 @@ import sys
 
 
 class Install:
-    def __init__(self, script, home):
+    def __init__(self, script, home) -> None:
         self.script = script
         self.home = home
 
     def install_config(self) -> None:
         config = os.path.join(self.script, 'config')
         dot_config = os.path.join(self.home, '.config')
-        prompt = input(f'Installing dotfiles into {dot_config}, this will replace current files. Continue? (y/n)')
+        prompt = input(f'Installing dotfiles into {dot_config}.\n'\
+                        'This will replace current files, continue? (y/n)')
 
         if prompt == 'y':
             retun_code = os.system(f'cp -rv {config}/* {dot_config}/.')
@@ -36,7 +37,8 @@ class Install:
 
     def install_profile(self) -> None:
         profile = os.path.join(self.script, 'profile')
-        prompt = input(f'Installing dotfiles into {self.home}, this will repalce current files. Continue? (y/n)')
+        prompt = input(f'Installing dotfiles into {self.home}.\n'\
+                        'This will repalce current files, continue? (y/n)')
         
         if prompt == 'y':
             return_code = os.system(f'cp -rv {profile}/* {self.home}/.')
