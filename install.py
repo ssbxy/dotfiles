@@ -13,31 +13,30 @@ class Install:
         self.script = script
         self.home = home
 
-    def install_config() -> None:
+    def install_config(self) -> None:
         config = os.path.join(self.script, 'config')
         dot_config = os.path.join(self.home, '.config')
+        print(f'{config}')
+        print(f'{dot_config}')
+        
         prompt = input('Installing .config files, this will replace current files. Continue (y/n)')
         if prompt == 'y':
-            retun_code = os.system(f'sudo cp -rv {self.script}/{config}/* {self.home}/{dot_config}/')
+            retun_code = os.system(f'cp -rv {config}/* {dot_config}/.')
             if retun_code != 0:
                 print(f'Failed to run command. {retun_code}')
                 sys.exit(1)
-            else:
-                break
         else:
             print('.config files not installed')
         return None
 
-    def install_profile() -> None:
+    def install_profile(self) -> None:
         profile = os.path.join(self.script, 'profile')
         prompt = input(f'Installing files into {self.home}, this will repalce current files. Continue (y/n)')
         if prompt == 'y':
-            return_code = os.system(f'sudo cp -rv {self.script}/{profile}/* {self.home}')
+            return_code = os.system(f'cp -rv {profile}/* {self.home}/.')
             if return_code != 0:
                 print(f'Fauled to run command. {return_code}')
                 sys.exit(1)
-            else:
-                break
         else:
             print('Files not installed')
         return None
