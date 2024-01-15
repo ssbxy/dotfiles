@@ -2,6 +2,11 @@
 """
 Install script for dotfiles
 https://github.com/ssbxy/dotfiles
+
+TO DO: 
+    - Replace os.system with shutil
+    - Add in if path exists statement
+    - Change if prompt == to case statement  
 """
 
 import os
